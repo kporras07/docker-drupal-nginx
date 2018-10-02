@@ -163,7 +163,7 @@ ENV \
 
 # Base packages
 RUN apt-get update && \
-  apt-get install -y git sudo software-properties-common python-software-properties
+  apt-get install -y git sudo software-properties-common python-software-properties wget
 
 RUN sudo npm install -g --unsafe-perm=true --allow-root phantomjs@${PHANTOMJS_VERSION}
 RUN sudo npm install -g --unsafe-perm=true --allow-root casperjs@${CASPERJS_VERSION}
