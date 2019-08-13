@@ -106,8 +106,7 @@ COPY /conf/php/cli/php.ini-development /etc/php/7.2/cli/php.ini
 # Prevent php warnings
 RUN sed -ir 's@^#@//@' /etc/php/7.2/mods-available/*
 RUN phpenmod \
-    redis  \
-    xdebug
+    redis
     # xhprof
 
 # Configure NGINX
