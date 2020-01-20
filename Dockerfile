@@ -19,30 +19,30 @@ RUN add-apt-repository ppa:ondrej/php && \
     apt-get update && \
     DEBIAN_FRONTEND="noninteractive" apt-get install --yes \
         php-pear          \
-        php7.2-bcmath     \
-        php7.2-cli        \
-        php7.2-common     \
-        php7.2-curl       \
-        php7.2-dev        \
-        php7.2-fpm        \
-        php7.2-gd         \
-        php7.2-imagick    \
-        php7.2-imap       \
-        php7.2-intl       \
-        php7.2-json       \
-        php7.2-ldap       \
-        php7.2-mbstring   \
-        php7.2-memcache   \
-        php7.2-mysql      \
-        php7.2-opcache    \
-        php7.2-readline   \
-        # php7.2-redis      \
-        php7.2-sqlite     \
-        php7.2-tidy       \
-        php7.2-xdebug     \
-        php7.2-xml        \
-        php7.2-zip
-        # php7.2-xhprof
+        php7.3-bcmath     \
+        php7.3-cli        \
+        php7.3-common     \
+        php7.3-curl       \
+        php7.3-dev        \
+        php7.3-fpm        \
+        php7.3-gd         \
+        php7.3-imagick    \
+        php7.3-imap       \
+        php7.3-intl       \
+        php7.3-json       \
+        php7.3-ldap       \
+        php7.3-mbstring   \
+        php7.3-memcache   \
+        php7.3-mysql      \
+        php7.3-opcache    \
+        php7.3-readline   \
+        # php7.3-redis      \
+        php7.3-sqlite     \
+        php7.3-tidy       \
+        php7.3-xdebug     \
+        php7.3-xml        \
+        php7.3-zip
+        # php7.3-xhprof
 
 # phpredis
 ENV PHPREDIS_VERSION='3.0.0'
@@ -56,7 +56,7 @@ RUN cd /usr/local/src/phpredis && \
     make clean  && \
     make        && \
     make install
-COPY ./conf/php/mods-available/redis.ini /etc/php/7.2/mods-available/redis.ini
+COPY ./conf/php/mods-available/redis.ini /etc/php/7.3/mods-available/redis.ini
 
 # NGNIX
 RUN apt-get update && \
@@ -95,16 +95,16 @@ RUN apt-get update && \
 
 # Configure PHP
 RUN mkdir /run/php
-RUN cp /etc/php/7.2/fpm/php.ini /etc/php/7.2/fpm/php.ini.bak
-COPY ./conf/php/fpm/php.ini-development /etc/php/7.2/fpm/php.ini
-# COPY /conf/php/fpm/php.ini-production /etc/php/7.2/fpm/php.ini
-RUN cp /etc/php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf.bak
-COPY /conf/php/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf
-RUN cp /etc/php/7.2/cli/php.ini /etc/php/7.2/cli/php.ini.bak
-COPY /conf/php/cli/php.ini-development /etc/php/7.2/cli/php.ini
-# COPY /conf/php/cli/php.ini-production /etc/php/7.2/cli/php.ini
+RUN cp /etc/php/7.3/fpm/php.ini /etc/php/7.3/fpm/php.ini.bak
+COPY ./conf/php/fpm/php.ini-development /etc/php/7.3/fpm/php.ini
+# COPY /conf/php/fpm/php.ini-production /etc/php/7.3/fpm/php.ini
+RUN cp /etc/php/7.3/fpm/pool.d/www.conf /etc/php/7.3/fpm/pool.d/www.conf.bak
+COPY /conf/php/fpm/pool.d/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+RUN cp /etc/php/7.3/cli/php.ini /etc/php/7.3/cli/php.ini.bak
+COPY /conf/php/cli/php.ini-development /etc/php/7.3/cli/php.ini
+# COPY /conf/php/cli/php.ini-production /etc/php/7.3/cli/php.ini
 # Prevent php warnings
-RUN sed -ir 's@^#@//@' /etc/php/7.2/mods-available/*
+RUN sed -ir 's@^#@//@' /etc/php/7.3/mods-available/*
 RUN phpenmod \
     redis
     # xhprof
