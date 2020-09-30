@@ -145,10 +145,10 @@ ADD services/ /etc/service/
 RUN chmod -v +x /etc/service/*/run
 
 # Node and backstop
-RUN curl "https://deb.nodesource.com/setup_11.x" -o "setup_11.x" && \
-  chmod +x setup_11.x && \
-  ./setup_11.x && \
-  rm setup_11.x && \
+RUN curl "https://deb.nodesource.com/setup_10.x" -o "setup_10.x" && \
+  chmod +x setup_10.x && \
+  ./setup_10.x && \
+  rm setup_10.x && \
   apt-get install nodejs -y
 
 ENV \
